@@ -186,16 +186,18 @@ export default function PlaygroundPage() {
     <div className="grid h-screen w-full pl-[69px]">
       <Nav currentPath='/prompt'/>
       <div className="flex flex-col h-screen">
-        <header className="sticky top-0 z-10 flex h-[69px] items-center gap-1 border-b bg-background px-4">
+        <header className="sticky top-0 z-10 flex min-h-[69px] items-center gap-1 border-b bg-background px-4">
           <h1 className="text-xl font-semibold">Meta Prompt</h1>
           <Button
             variant="outline"
             size="sm"
-            className="ml-auto gap-1.5 text-sm"
+            className=" gap-1.5 text-sm"
           >
             <Share className="size-3.5" />
             Share
           </Button>
+          <div className='ml-auto text-sm'> <ThemeToggle /> </div>
+         
         </header>
         <div className="hidden flex-1 h-full flex-col md:flex">
           <div className="flex-1">

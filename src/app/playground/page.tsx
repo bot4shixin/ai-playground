@@ -194,7 +194,7 @@ export default function PlaygroundPage() {
     <div className="grid h-screen w-full pl-[69px]">
       <Nav currentPath= "/playground"/>
       <div className="flex-1 flex flex-col h-screen">
-        <header className="sticky top-0 z-10 flex h-[69px] items-center gap-1 border-b bg-background px-4">
+        <header className="sticky top-0 z-10 flex min-h-[69px] items-center gap-1 border-b bg-background px-4">
           <h1 className="text-xl font-semibold">Playground</h1>
           <div className="ml-auto flex space-x-2 sm:justify-end">
             <PresetSelector presets={presets} onChange={
