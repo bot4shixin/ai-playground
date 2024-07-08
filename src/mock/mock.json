@@ -1,0 +1,387 @@
+[
+    {
+        "transcript_id": 4,
+        "transcript": "1Alex: Okay, just remind me that I need to send the recording to you.\nAlex: Yeah, I'm gonna skip a couple minor steps just because i'll do really quickly.\nAlex: But I I basically if you went into salesforce, and what I do is I run a domain report which just means, figure out based on whatever those filters you put in right like.\nAShixin: Pick a couple industries, and they're below fifty, Mrr.\nAlex: It will pull domains for you.\nAlex: I just called it a domain report.\nAlex: But basically you just have to include the field domains.\nShixin: And then I would export that in two excel sheep and then paste those into one column and save it as a Csv.\nAlex: If you get there you just have to have a Csv.\nEric: With domains.\nAlex: Then you can do a list list match.\nAlex: So you just say, upload this.\nAlex: It's two ways.\nAlex: You can do it.\nAlex: You can do it a contact level which can look at emails or you can do it.\nAlex: A company level.\nAlex: We're just gonna look at domains.\nAlex: And again, all this is doing is saying like we have this database of all these contacts with information.\nAlex: Right?\nAlex: Do we have this domains?\nAlex: Do we have a specific content?\nAlex: So the way you're going to want to do it is by domain.\nAlex: It's a lot more fission, and then you pick list, match.\nAlex: You go next, and then you say, upload Csb: I might actually have one with you, but you know I work.\nAlex: So if you had your Csv.\nAlex: Right, you pull it in there, and then it's going to upload it.\nAlex: I'm just done with that.\nAlex: I actually would be nice if I can.\nAlex: That's whatever.\nAlex: If you get Csv you map it you're just gonna tell it.\nAlex: It's like a drop down, and you put in the second one, and it will say, like Url or domain or something.\nAlex: You click it, and then it's going to map to the header that you put in that Csv file.\nAlex: So if in the Csv there's like five hundred domains right, and then the header says, Domain, you just map it up, and then it's like cool.\nAlex: I I get it, and the maps here doesn't think.\nAlex: Then, when it's done, but it's done, it will give you a an email, or it will just tell you here that it mapped up two thousand two hundred companies.\nSema: I got it for by one,",
+        "meeting_queries": [
+            {
+                "query_id": 0,
+                "query": "Alex asks: Catch me up",
+                "answers": [
+                    {
+                        "answer_id": 0,
+                        "answer": "In the meeting, Alex was explaining the process of running a domain report in Salesforce. This involves setting filters, pulling domains, and exporting the data into an Excel sheet, which is then saved as a CSV file. This CSV file is used for a list match, which can be done at a contact level or a company level. The preferred method is by domain as it's more efficient. The CSV file is uploaded, and the domains are mapped to the header in the CSV file. Once the process is complete, a notification is sent either via email or directly in the system, indicating the number of companies that have been mapped.",
+                        "scores": [
+                            {
+                                "score_id": 0,
+                                "score_algorithm": "default-1b02607",
+                                "model": "gpt-4-32k-0613",
+                                "score": 5,
+                                "justification": "[SCORE DECISION]\n[REASONING]: The AI assistant has accurately summarized the conversation held in the meeting. It correctly identified the main points of the discussion, which revolved around running a domain report in Salesforce, creating a CSV file, and performing a list match. The assistant also correctly mentioned that the process could be done at either a contact level or a company level, with the preferred method being by domain. The assistant's response is clear, concise, and adheres to the guidelines provided in the task prompt.\n[SCORE]: 5\n[END OF SCORE DECISION]"
+                            }, 
+                            {
+                                "score_id": 1,
+                                "score_algorithm": "cot-1b02607",
+                                "model": "gpt-4-32k-0613",
+                                "score": 5,
+                                "justification": "[SCORE DECISION]\n[ASPECTS]:\n    Understanding the Prompt: 5\n    Extracting Relevant Information: 5\n    Answering the Question: 5\n    Language and Tone: 5\n    [REASONING]: \nThe AI assistant has demonstrated a good understanding of the prompt by providing a concise and accurate summary of the meeting conversation. It has effectively extracted the relevant information from the context and structured it in a coherent manner that directly answers the user's question. The language and tone used by the AI assistant are professional and suitable for the context. It maintains clarity and precision throughout the response, making it easy for the user to understand the information being conveyed.\n[SCORE]: 5\n[END OF SCORE DECISION]"
+                            }
+                        ],
+                        "human_evaluation": [
+                            {
+                                "annotator_id": 0,
+                                "preferred_score_id": 1,
+                                "preference_justification": "bla bla bla",
+                                "score": 5,
+                                "score_justification": "bla bla bla"
+                            }, 
+                            {
+                                "annotator_id": 1,
+                                "preferred_score_id": 0,
+                                "preference_justification": "bla bla bla",
+                                "score": 5,
+                                "score_justification": "bla bla bla"
+                            }
+                        ]
+                    },
+                    {
+                        "answer_id": 2,
+                        "answer": "222In the meeting, Alex was explaining the process of running a domain report in Salesforce. This involves setting filters, pulling domains, and exporting the data into an Excel sheet, which is then saved as a CSV file. This CSV file is used for a list match, which can be done at a contact level or a company level. The preferred method is by domain as it's more efficient. The CSV file is uploaded, and the domains are mapped to the header in the CSV file. Once the process is complete, a notification is sent either via email or directly in the system, indicating the number of companies that have been mapped.",
+                        "scores": [
+                            {
+                                "score_id": 0,
+                                "score_algorithm": "default-1b02607",
+                                "model": "gpt-4-32k-0613",
+                                "score": 5,
+                                "justification": "[SCORE DECISION]\n[REASONING]: The AI assistant has accurately summarized the conversation held in the meeting. It correctly identified the main points of the discussion, which revolved around running a domain report in Salesforce, creating a CSV file, and performing a list match. The assistant also correctly mentioned that the process could be done at either a contact level or a company level, with the preferred method being by domain. The assistant's response is clear, concise, and adheres to the guidelines provided in the task prompt.\n[SCORE]: 5\n[END OF SCORE DECISION]"
+                            }, 
+                            {
+                                "score_id": 1,
+                                "score_algorithm": "cot-1b02607",
+                                "model": "gpt-4-32k-0613",
+                                "score": 5,
+                                "justification": "[SCORE DECISION]\n[ASPECTS]:\n    Understanding the Prompt: 5\n    Extracting Relevant Information: 5\n    Answering the Question: 5\n    Language and Tone: 5\n    [REASONING]: \nThe AI assistant has demonstrated a good understanding of the prompt by providing a concise and accurate summary of the meeting conversation. It has effectively extracted the relevant information from the context and structured it in a coherent manner that directly answers the user's question. The language and tone used by the AI assistant are professional and suitable for the context. It maintains clarity and precision throughout the response, making it easy for the user to understand the information being conveyed.\n[SCORE]: 5\n[END OF SCORE DECISION]"
+                            }
+                        ],
+                        "human_evaluation": [
+                            {
+                                "annotator_id": 0,
+                                "preferred_score_id": 1,
+                                "preference_justification": "bla bla bla",
+                                "score": 5,
+                                "score_justification": "bla bla bla"
+                            }, 
+                            {
+                                "annotator_id": 1,
+                                "preferred_score_id": 0,
+                                "preference_justification": "bla bla bla",
+                                "score": 5,
+                                "score_justification": "bla bla bla"
+                            }
+                        ]
+                    },
+                    {
+                        "answer_id": 4,
+                        "answer": "222In the meeting, Alex was explaining the process of running a domain report in Salesforce. This involves setting filters, pulling domains, and exporting the data into an Excel sheet, which is then saved as a CSV file. This CSV file is used for a list match, which can be done at a contact level or a company level. The preferred method is by domain as it's more efficient. The CSV file is uploaded, and the domains are mapped to the header in the CSV file. Once the process is complete, a notification is sent either via email or directly in the system, indicating the number of companies that have been mapped.",
+                        "scores": [
+                            {
+                                "score_id": 0,
+                                "score_algorithm": "default-1b02607",
+                                "model": "gpt-4-32k-0613",
+                                "score": 5,
+                                "justification": "[SCORE DECISION]\n[REASONING]: The AI assistant has accurately summarized the conversation held in the meeting. It correctly identified the main points of the discussion, which revolved around running a domain report in Salesforce, creating a CSV file, and performing a list match. The assistant also correctly mentioned that the process could be done at either a contact level or a company level, with the preferred method being by domain. The assistant's response is clear, concise, and adheres to the guidelines provided in the task prompt.\n[SCORE]: 5\n[END OF SCORE DECISION]"
+                            }, 
+                            {
+                                "score_id": 1,
+                                "score_algorithm": "cot-1b02607",
+                                "model": "gpt-4-32k-0613",
+                                "score": 5,
+                                "justification": "[SCORE DECISION]\n[ASPECTS]:\n    Understanding the Prompt: 5\n    Extracting Relevant Information: 5\n    Answering the Question: 5\n    Language and Tone: 5\n    [REASONING]: \nThe AI assistant has demonstrated a good understanding of the prompt by providing a concise and accurate summary of the meeting conversation. It has effectively extracted the relevant information from the context and structured it in a coherent manner that directly answers the user's question. The language and tone used by the AI assistant are professional and suitable for the context. It maintains clarity and precision throughout the response, making it easy for the user to understand the information being conveyed.\n[SCORE]: 5\n[END OF SCORE DECISION]"
+                            }
+                        ],
+                        "human_evaluation": [
+                            {
+                                "annotator_id": 0,
+                                "preferred_score_id": 1,
+                                "preference_justification": "bla bla bla",
+                                "score": 5,
+                                "score_justification": "bla bla bla"
+                            }, 
+                            {
+                                "annotator_id": 1,
+                                "preferred_score_id": 0,
+                                "preference_justification": "bla bla bla",
+                                "score": 5,
+                                "score_justification": "bla bla bla"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "query_id": 0,
+                "query": "Alex asks: Catch me up",
+                "answers": [
+                    {
+                        "answer_id": 0,
+                        "answer": "In the meeting, Alex was explaining the process of running a domain report in Salesforce. This involves setting filters, pulling domains, and exporting the data into an Excel sheet, which is then saved as a CSV file. This CSV file is used for a list match, which can be done at a contact level or a company level. The preferred method is by domain as it's more efficient. The CSV file is uploaded, and the domains are mapped to the header in the CSV file. Once the process is complete, a notification is sent either via email or directly in the system, indicating the number of companies that have been mapped.",
+                        "scores": [
+                            {
+                                "score_id": 0,
+                                "score_algorithm": "default-1b02607",
+                                "model": "gpt-4-32k-0613",
+                                "score": 5,
+                                "justification": "[SCORE DECISION]\n[REASONING]: The AI assistant has accurately summarized the conversation held in the meeting. It correctly identified the main points of the discussion, which revolved around running a domain report in Salesforce, creating a CSV file, and performing a list match. The assistant also correctly mentioned that the process could be done at either a contact level or a company level, with the preferred method being by domain. The assistant's response is clear, concise, and adheres to the guidelines provided in the task prompt.\n[SCORE]: 5\n[END OF SCORE DECISION]"
+                            }, 
+                            {
+                                "score_id": 1,
+                                "score_algorithm": "cot-1b02607",
+                                "model": "gpt-4-32k-0613",
+                                "score": 5,
+                                "justification": "[SCORE DECISION]\n[ASPECTS]:\n    Understanding the Prompt: 5\n    Extracting Relevant Information: 5\n    Answering the Question: 5\n    Language and Tone: 5\n    [REASONING]: \nThe AI assistant has demonstrated a good understanding of the prompt by providing a concise and accurate summary of the meeting conversation. It has effectively extracted the relevant information from the context and structured it in a coherent manner that directly answers the user's question. The language and tone used by the AI assistant are professional and suitable for the context. It maintains clarity and precision throughout the response, making it easy for the user to understand the information being conveyed.\n[SCORE]: 5\n[END OF SCORE DECISION]"
+                            }
+                        ],
+                        "human_evaluation": [
+                            {
+                                "annotator_id": 0,
+                                "preferred_score_id": 1,
+                                "preference_justification": "bla bla bla",
+                                "score": 5,
+                                "score_justification": "bla bla bla"
+                            }, 
+                            {
+                                "annotator_id": 1,
+                                "preferred_score_id": 0,
+                                "preference_justification": "bla bla bla",
+                                "score": 5,
+                                "score_justification": "bla bla bla"
+                            }
+                        ]
+                    },
+                    {
+                        "answer_id": 2,
+                        "answer": "222In the meeting, Alex was explaining the process of running a domain report in Salesforce. This involves setting filters, pulling domains, and exporting the data into an Excel sheet, which is then saved as a CSV file. This CSV file is used for a list match, which can be done at a contact level or a company level. The preferred method is by domain as it's more efficient. The CSV file is uploaded, and the domains are mapped to the header in the CSV file. Once the process is complete, a notification is sent either via email or directly in the system, indicating the number of companies that have been mapped.",
+                        "scores": [
+                            {
+                                "score_id": 0,
+                                "score_algorithm": "default-1b02607",
+                                "model": "gpt-4-32k-0613",
+                                "score": 5,
+                                "justification": "[SCORE DECISION]\n[REASONING]: The AI assistant has accurately summarized the conversation held in the meeting. It correctly identified the main points of the discussion, which revolved around running a domain report in Salesforce, creating a CSV file, and performing a list match. The assistant also correctly mentioned that the process could be done at either a contact level or a company level, with the preferred method being by domain. The assistant's response is clear, concise, and adheres to the guidelines provided in the task prompt.\n[SCORE]: 5\n[END OF SCORE DECISION]"
+                            }, 
+                            {
+                                "score_id": 1,
+                                "score_algorithm": "cot-1b02607",
+                                "model": "gpt-4-32k-0613",
+                                "score": 5,
+                                "justification": "[SCORE DECISION]\n[ASPECTS]:\n    Understanding the Prompt: 5\n    Extracting Relevant Information: 5\n    Answering the Question: 5\n    Language and Tone: 5\n    [REASONING]: \nThe AI assistant has demonstrated a good understanding of the prompt by providing a concise and accurate summary of the meeting conversation. It has effectively extracted the relevant information from the context and structured it in a coherent manner that directly answers the user's question. The language and tone used by the AI assistant are professional and suitable for the context. It maintains clarity and precision throughout the response, making it easy for the user to understand the information being conveyed.\n[SCORE]: 5\n[END OF SCORE DECISION]"
+                            }
+                        ],
+                        "human_evaluation": [
+                            {
+                                "annotator_id": 0,
+                                "preferred_score_id": 1,
+                                "preference_justification": "bla bla bla",
+                                "score": 5,
+                                "score_justification": "bla bla bla"
+                            }, 
+                            {
+                                "annotator_id": 1,
+                                "preferred_score_id": 0,
+                                "preference_justification": "bla bla bla",
+                                "score": 5,
+                                "score_justification": "bla bla bla"
+                            }
+                        ]
+                    },
+                    {
+                        "answer_id": 4,
+                        "answer": "222In the meeting, Alex was explaining the process of running a domain report in Salesforce. This involves setting filters, pulling domains, and exporting the data into an Excel sheet, which is then saved as a CSV file. This CSV file is used for a list match, which can be done at a contact level or a company level. The preferred method is by domain as it's more efficient. The CSV file is uploaded, and the domains are mapped to the header in the CSV file. Once the process is complete, a notification is sent either via email or directly in the system, indicating the number of companies that have been mapped.",
+                        "scores": [
+                            {
+                                "score_id": 0,
+                                "score_algorithm": "default-1b02607",
+                                "model": "gpt-4-32k-0613",
+                                "score": 5,
+                                "justification": "[SCORE DECISION]\n[REASONING]: The AI assistant has accurately summarized the conversation held in the meeting. It correctly identified the main points of the discussion, which revolved around running a domain report in Salesforce, creating a CSV file, and performing a list match. The assistant also correctly mentioned that the process could be done at either a contact level or a company level, with the preferred method being by domain. The assistant's response is clear, concise, and adheres to the guidelines provided in the task prompt.\n[SCORE]: 5\n[END OF SCORE DECISION]"
+                            }, 
+                            {
+                                "score_id": 1,
+                                "score_algorithm": "cot-1b02607",
+                                "model": "gpt-4-32k-0613",
+                                "score": 5,
+                                "justification": "[SCORE DECISION]\n[ASPECTS]:\n    Understanding the Prompt: 5\n    Extracting Relevant Information: 5\n    Answering the Question: 5\n    Language and Tone: 5\n    [REASONING]: \nThe AI assistant has demonstrated a good understanding of the prompt by providing a concise and accurate summary of the meeting conversation. It has effectively extracted the relevant information from the context and structured it in a coherent manner that directly answers the user's question. The language and tone used by the AI assistant are professional and suitable for the context. It maintains clarity and precision throughout the response, making it easy for the user to understand the information being conveyed.\n[SCORE]: 5\n[END OF SCORE DECISION]"
+                            }
+                        ],
+                        "human_evaluation": [
+                            {
+                                "annotator_id": 0,
+                                "preferred_score_id": 1,
+                                "preference_justification": "bla bla bla",
+                                "score": 5,
+                                "score_justification": "bla bla bla"
+                            }, 
+                            {
+                                "annotator_id": 1,
+                                "preferred_score_id": 0,
+                                "preference_justification": "bla bla bla",
+                                "score": 5,
+                                "score_justification": "bla bla bla"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "query_id": 0,
+                "query": "Alex asks: Catch me up",
+                "answers": [
+                    {
+                        "answer_id": 0,
+                        "answer": "In the meeting, Alex was explaining the process of running a domain report in Salesforce. This involves setting filters, pulling domains, and exporting the data into an Excel sheet, which is then saved as a CSV file. This CSV file is used for a list match, which can be done at a contact level or a company level. The preferred method is by domain as it's more efficient. The CSV file is uploaded, and the domains are mapped to the header in the CSV file. Once the process is complete, a notification is sent either via email or directly in the system, indicating the number of companies that have been mapped.",
+                        "scores": [
+                            {
+                                "score_id": 0,
+                                "score_algorithm": "default-1b02607",
+                                "model": "gpt-4-32k-0613",
+                                "score": 5,
+                                "justification": "[SCORE DECISION]\n[REASONING]: The AI assistant has accurately summarized the conversation held in the meeting. It correctly identified the main points of the discussion, which revolved around running a domain report in Salesforce, creating a CSV file, and performing a list match. The assistant also correctly mentioned that the process could be done at either a contact level or a company level, with the preferred method being by domain. The assistant's response is clear, concise, and adheres to the guidelines provided in the task prompt.\n[SCORE]: 5\n[END OF SCORE DECISION]"
+                            }, 
+                            {
+                                "score_id": 1,
+                                "score_algorithm": "cot-1b02607",
+                                "model": "gpt-4-32k-0613",
+                                "score": 5,
+                                "justification": "[SCORE DECISION]\n[ASPECTS]:\n    Understanding the Prompt: 5\n    Extracting Relevant Information: 5\n    Answering the Question: 5\n    Language and Tone: 5\n    [REASONING]: \nThe AI assistant has demonstrated a good understanding of the prompt by providing a concise and accurate summary of the meeting conversation. It has effectively extracted the relevant information from the context and structured it in a coherent manner that directly answers the user's question. The language and tone used by the AI assistant are professional and suitable for the context. It maintains clarity and precision throughout the response, making it easy for the user to understand the information being conveyed.\n[SCORE]: 5\n[END OF SCORE DECISION]"
+                            }
+                        ],
+                        "human_evaluation": [
+                            {
+                                "annotator_id": 0,
+                                "preferred_score_id": 1,
+                                "preference_justification": "bla bla bla",
+                                "score": 5,
+                                "score_justification": "bla bla bla"
+                            }, 
+                            {
+                                "annotator_id": 1,
+                                "preferred_score_id": 0,
+                                "preference_justification": "bla bla bla",
+                                "score": 5,
+                                "score_justification": "bla bla bla"
+                            }
+                        ]
+                    },
+                    {
+                        "answer_id": 0,
+                        "answer": "In the meeting, Alex was explaining the process of running a domain report in Salesforce. This involves setting filters, pulling domains, and exporting the data into an Excel sheet, which is then saved as a CSV file. This CSV file is used for a list match, which can be done at a contact level or a company level. The preferred method is by domain as it's more efficient. The CSV file is uploaded, and the domains are mapped to the header in the CSV file. Once the process is complete, a notification is sent either via email or directly in the system, indicating the number of companies that have been mapped.",
+                        "scores": [
+                            {
+                                "score_id": 0,
+                                "score_algorithm": "default-1b02607",
+                                "model": "gpt-4-32k-0613",
+                                "score": 5,
+                                "justification": "[SCORE DECISION]\n[REASONING]: The AI assistant has accurately summarized the conversation held in the meeting. It correctly identified the main points of the discussion, which revolved around running a domain report in Salesforce, creating a CSV file, and performing a list match. The assistant also correctly mentioned that the process could be done at either a contact level or a company level, with the preferred method being by domain. The assistant's response is clear, concise, and adheres to the guidelines provided in the task prompt.\n[SCORE]: 5\n[END OF SCORE DECISION]"
+                            }, 
+                            {
+                                "score_id": 1,
+                                "score_algorithm": "cot-1b02607",
+                                "model": "gpt-4-32k-0613",
+                                "score": 5,
+                                "justification": "[SCORE DECISION]\n[ASPECTS]:\n    Understanding the Prompt: 5\n    Extracting Relevant Information: 5\n    Answering the Question: 5\n    Language and Tone: 5\n    [REASONING]: \nThe AI assistant has demonstrated a good understanding of the prompt by providing a concise and accurate summary of the meeting conversation. It has effectively extracted the relevant information from the context and structured it in a coherent manner that directly answers the user's question. The language and tone used by the AI assistant are professional and suitable for the context. It maintains clarity and precision throughout the response, making it easy for the user to understand the information being conveyed.\n[SCORE]: 5\n[END OF SCORE DECISION]"
+                            }
+                        ],
+                        "human_evaluation": [
+                            {
+                                "annotator_id": 0,
+                                "preferred_score_id": 1,
+                                "preference_justification": "bla bla bla",
+                                "score": 5,
+                                "score_justification": "bla bla bla"
+                            }, 
+                            {
+                                "annotator_id": 1,
+                                "preferred_score_id": 0,
+                                "preference_justification": "bla bla bla",
+                                "score": 5,
+                                "score_justification": "bla bla bla"
+                            }
+                        ]
+                    },
+                    {
+                        "answer_id": 2,
+                        "answer": "222In the meeting, Alex was explaining the process of running a domain report in Salesforce. This involves setting filters, pulling domains, and exporting the data into an Excel sheet, which is then saved as a CSV file. This CSV file is used for a list match, which can be done at a contact level or a company level. The preferred method is by domain as it's more efficient. The CSV file is uploaded, and the domains are mapped to the header in the CSV file. Once the process is complete, a notification is sent either via email or directly in the system, indicating the number of companies that have been mapped.",
+                        "scores": [
+                            {
+                                "score_id": 0,
+                                "score_algorithm": "default-1b02607",
+                                "model": "gpt-4-32k-0613",
+                                "score": 5,
+                                "justification": "[SCORE DECISION]\n[REASONING]: The AI assistant has accurately summarized the conversation held in the meeting. It correctly identified the main points of the discussion, which revolved around running a domain report in Salesforce, creating a CSV file, and performing a list match. The assistant also correctly mentioned that the process could be done at either a contact level or a company level, with the preferred method being by domain. The assistant's response is clear, concise, and adheres to the guidelines provided in the task prompt.\n[SCORE]: 5\n[END OF SCORE DECISION]"
+                            }, 
+                            {
+                                "score_id": 1,
+                                "score_algorithm": "cot-1b02607",
+                                "model": "gpt-4-32k-0613",
+                                "score": 5,
+                                "justification": "[SCORE DECISION]\n[ASPECTS]:\n    Understanding the Prompt: 5\n    Extracting Relevant Information: 5\n    Answering the Question: 5\n    Language and Tone: 5\n    [REASONING]: \nThe AI assistant has demonstrated a good understanding of the prompt by providing a concise and accurate summary of the meeting conversation. It has effectively extracted the relevant information from the context and structured it in a coherent manner that directly answers the user's question. The language and tone used by the AI assistant are professional and suitable for the context. It maintains clarity and precision throughout the response, making it easy for the user to understand the information being conveyed.\n[SCORE]: 5\n[END OF SCORE DECISION]"
+                            }
+                        ],
+                        "human_evaluation": [
+                            {
+                                "annotator_id": 0,
+                                "preferred_score_id": 1,
+                                "preference_justification": "bla bla bla",
+                                "score": 5,
+                                "score_justification": "bla bla bla"
+                            }, 
+                            {
+                                "annotator_id": 1,
+                                "preferred_score_id": 0,
+                                "preference_justification": "bla bla bla",
+                                "score": 5,
+                                "score_justification": "bla bla bla"
+                            }
+                        ]
+                    },
+                    {
+                        "answer_id": 4,
+                        "answer": "222In the meeting, Alex was explaining the process of running a domain report in Salesforce. This involves setting filters, pulling domains, and exporting the data into an Excel sheet, which is then saved as a CSV file. This CSV file is used for a list match, which can be done at a contact level or a company level. The preferred method is by domain as it's more efficient. The CSV file is uploaded, and the domains are mapped to the header in the CSV file. Once the process is complete, a notification is sent either via email or directly in the system, indicating the number of companies that have been mapped.",
+                        "scores": [
+                            {
+                                "score_id": 0,
+                                "score_algorithm": "default-1b02607",
+                                "model": "gpt-4-32k-0613",
+                                "score": 5,
+                                "justification": "[SCORE DECISION]\n[REASONING]: The AI assistant has accurately summarized the conversation held in the meeting. It correctly identified the main points of the discussion, which revolved around running a domain report in Salesforce, creating a CSV file, and performing a list match. The assistant also correctly mentioned that the process could be done at either a contact level or a company level, with the preferred method being by domain. The assistant's response is clear, concise, and adheres to the guidelines provided in the task prompt.\n[SCORE]: 5\n[END OF SCORE DECISION]"
+                            }, 
+                            {
+                                "score_id": 1,
+                                "score_algorithm": "cot-1b02607",
+                                "model": "gpt-4-32k-0613",
+                                "score": 5,
+                                "justification": "[SCORE DECISION]\n[ASPECTS]:\n    Understanding the Prompt: 5\n    Extracting Relevant Information: 5\n    Answering the Question: 5\n    Language and Tone: 5\n    [REASONING]: \nThe AI assistant has demonstrated a good understanding of the prompt by providing a concise and accurate summary of the meeting conversation. It has effectively extracted the relevant information from the context and structured it in a coherent manner that directly answers the user's question. The language and tone used by the AI assistant are professional and suitable for the context. It maintains clarity and precision throughout the response, making it easy for the user to understand the information being conveyed.\n[SCORE]: 5\n[END OF SCORE DECISION]"
+                            }
+                        ],
+                        "human_evaluation": [
+                            {
+                                "annotator_id": 0,
+                                "preferred_score_id": 1,
+                                "preference_justification": "bla bla bla",
+                                "score": 5,
+                                "score_justification": "bla bla bla"
+                            }, 
+                            {
+                                "annotator_id": 1,
+                                "preferred_score_id": 0,
+                                "preference_justification": "bla bla bla",
+                                "score": 5,
+                                "score_justification": "bla bla bla"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+   
+]

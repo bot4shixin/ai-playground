@@ -1,0 +1,35 @@
+[
+    {
+        "transcript_id": 0,
+        "transcript": "*****,",
+        "meeting_queries": [
+            {
+                "query_id": 0,
+                "query": "****",
+                "answers": [
+                    {
+                        "answer_id": 0,
+                        "answer": "****",
+                        "scores": [
+                            {
+                                "score_id": 0,
+                                "score_algorithm": "default-1b02607",
+                                "model": "gpt-4-32k-0613",
+                                "score": 5,
+                                "justification": "*****"
+                            }, 
+                            {
+                                "score_id": 1,
+                                "score_algorithm": "cot-1b02607",
+                                "model": "gpt-4-32k-0613",
+                                "score": 5,
+                                "justification": "[SCORE DECISION]********"
+                            }
+                        ]
+
+                    }
+                ]
+            }
+        ]
+    }
+]
