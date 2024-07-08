@@ -22,7 +22,7 @@ export const authConfig = {
     signIn: '/login',
     newUser: '/signup'
   },
-  adapter: PrismaAdapter(prisma),
+  // adapter: PrismaAdapter(prisma),
   callbacks: {
     async authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user
