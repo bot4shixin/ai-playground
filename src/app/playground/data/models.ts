@@ -1,4 +1,4 @@
-export const types = ["Zoom", "Claude", "GPT-4", "GPT-3.5","GPT-3", "Gemini","Codex", "Others"] as const
+export const types = ['openai','anthropic','google','mistral'] as const
 
 export type ModelType = (typeof types)[number]
 
@@ -8,210 +8,284 @@ export interface Model<Type = string> {
   description: string
   strengths?: string
   type: Type
+  context_length: number
 }
 
 export const models: Model<ModelType>[] = [
-
   {
     "name": "gpt-3.5-turbo",
-    "description": "An advanced version of the GPT-3.5 model with enhanced performance and capabilities.",
-    "type": "GPT-3.5",
-    "strengths": "Improved performance in various tasks, including complex intent, cause and effect understanding, creative generation, search, and summarization."
+    "description": "gpt-3.5-turbo",
+    "type": "openai",
+    "context_length": 4096
   },
-
-
-  {
-    name: "text-davinci-003",
-    description:
-      "Most capable GPT-3 model. Can do any task the other models can do, often with higher quality, longer output and better instruction-following. Also supports inserting completions within text.",
-    type: "GPT-3",
-    strengths:
-      "Complex intent, cause and effect, creative generation, search, summarization for audience",
-  },
-  {
-    name: "text-curie-001",
-    description: "Very capable, but faster and lower cost than Davinci.",
-    type: "GPT-3",
-    strengths:
-      "Language translation, complex classification, sentiment, summarization",
-  },
-  {
-    name: "text-babbage-001",
-    description: "Capable of straightforward tasks, very fast, and lower cost.",
-    type: "GPT-3",
-    strengths: "Moderate classification, semantic search",
-  },
-  {
-    name: "text-ada-001",
-    description:
-      "Capable of very simple tasks, usually the fastest model in the GPT-3 series, and lowest cost.",
-    type: "GPT-3",
-    strengths:
-      "Parsing text, simple classification, address correction, keywords",
-  },
-  {
-    name: "code-davinci-002",
-    description:
-      "Most capable Codex model. Particularly good at translating natural language to code. In addition to completing code, also supports inserting completions within code.",
-    type: "Codex",
-  },
-  {
-    name: "code-cushman-001",
-    description:
-      "Almost as capable as Davinci Codex, but slightly faster. This speed advantage may make it preferable for real-time applications.",
-    type: "Codex",
-    strengths: "Real-time application where low-latency is preferable",
-  },
-   
   {
     "name": "gpt-3.5-turbo-0301",
-    "description": "A specific version of the GPT-3.5 Turbo model released on March 1st, with potentially updated features or improvements.",
-    "type": "GPT-3.5",
-    "strengths": "Similar to GPT-3.5 Turbo, with possible enhancements or adjustments made after March 1st."
+    "description": "gpt-3.5-turbo-0301",
+    "type": "openai",
+    "context_length": 4096
   },
   {
     "name": "gpt-3.5-turbo-0613",
-    "description": "A specific version of the GPT-3.5 Turbo model released on June 13th, with potentially updated features or improvements.",
-    "type": "GPT-3.5",
-    "strengths": "Similar to GPT-3.5 Turbo, with possible enhancements or adjustments made after June 13th."
+    "description": "gpt-3.5-turbo-0613",
+    "type": "openai",
+    "context_length": 4096
+  },
+  {
+    "name": "gpt-3.5-turbo-0125",
+    "description": "gpt-3.5-turbo-0125",
+    "type": "openai",
+    "context_length": 16385
   },
   {
     "name": "gpt-3.5-turbo-16k",
-    "description": "An advanced version of the GPT-3.5 Turbo model with a larger parameter size of 16k.",
-    "type": "GPT-3.5",
-    "strengths": "Improved performance and capability due to the larger parameter size, suitable for more complex tasks."
+    "description": "gpt-3.5-turbo-16k",
+    "type": "openai",
+    "context_length": 16384
   },
   {
     "name": "gpt-3.5-turbo-16k-0613",
-    "description": "A specific version of the GPT-3.5 Turbo 16k model released on June 13th, with potentially updated features or improvements.",
-    "type": "GPT-3.5",
-    "strengths": "Similar to GPT-3.5 Turbo 16k, with possible enhancements or adjustments made after June 13th."
+    "description": "gpt-3.5-turbo-16k-0613",
+    "type": "openai",
+    "context_length": 16384
+  },
+  {
+    "name": "gpt-3.5-turbo-1106",
+    "description": "gpt-3.5-turbo-1106",
+    "type": "openai",
+    "context_length": 16385
+  },
+  {
+    "name": "gpt-3.5-turbo-instruct",
+    "description": "gpt-3.5-turbo-instruct",
+    "type": "openai",
+    "context_length": 4096
   },
   {
     "name": "gpt-4",
-    "description": "The next generation of the GPT series, offering even more advanced language processing capabilities.",
-    "type": "GPT-4",
-    "strengths": "Expected to surpass GPT-3 in performance, offering improved capabilities in various language tasks."
+    "description": "gpt-4",
+    "type": "openai",
+    "context_length": 8192
   },
   {
     "name": "gpt-4-0314",
-    "description": "A specific version of the GPT-4 model released on March 14th, with potentially updated features or improvements.",
-    "type": "GPT-4",
-    "strengths": "Similar to GPT-4, with possible enhancements or adjustments made after March 14th."
+    "description": "gpt-4-0314",
+    "type": "openai",
+    "context_length": 8192
   },
   {
     "name": "gpt-4-0613",
-    "description": "A specific version of the GPT-4 model released on June 13th, with potentially updated features or improvements.",
-    "type": "GPT-4",
-    "strengths": "Similar to GPT-4, with possible enhancements or adjustments made after June 13th."
+    "description": "gpt-4-0613",
+    "type": "openai",
+    "context_length": 8192
   },
   {
     "name": "gpt-4-32k",
-    "description": "An advanced version of the GPT-4 model with a larger parameter size of 32k.",
-    "type": "GPT-4",
-    "strengths": "Improved performance and capability due to the larger parameter size, suitable for more complex tasks."
+    "description": "gpt-4-32k",
+    "type": "openai",
+    "context_length": 32768
   },
   {
     "name": "gpt-4-32k-0314",
-    "description": "A specific version of the GPT-4 32k model released on March 14th, with potentially updated features or improvements.",
-    "type": "GPT-4",
-    "strengths": "Similar to GPT-4 32k, with possible enhancements or adjustments made after March 14th."
+    "description": "gpt-4-32k-0314",
+    "type": "openai",
+    "context_length": 32768
   },
   {
     "name": "gpt-4-32k-0613",
-    "description": "A specific version of the GPT-4 32k model released on June 13th, with potentially updated features or improvements.",
-    "type": "GPT-4",
-    "strengths": "Similar to GPT-4 32k, with possible enhancements or adjustments made after June 13th."
+    "description": "gpt-4-32k-0613",
+    "type": "openai",
+    "context_length": 32768
+  },
+  {
+    "name": "gpt-4-1106-preview",
+    "description": "gpt-4-1106-preview",
+    "type": "openai",
+    "context_length": 128000
+  },
+  {
+    "name": "gpt-4-0125-preview",
+    "description": "gpt-4-0125-preview",
+    "type": "openai",
+    "context_length": 128000
+  },
+  {
+    "name": "gpt-4-turbo",
+    "description": "gpt-4-turbo",
+    "type": "openai",
+    "context_length": 128000
+  },
+  {
+    "name": "gpt-4-turbo-2024-04-09",
+    "description": "gpt-4-turbo-2024-04-09",
+    "type": "openai",
+    "context_length": 128000
+  },
+  {
+    "name": "gpt-4-turbo-preview",
+    "description": "gpt-4-turbo-preview",
+    "type": "openai",
+    "context_length": 128000
+  },
+  {
+    "name": "gpt-4o",
+    "description": "gpt-4o",
+    "type": "openai",
+    "context_length": 128000
+  },
+  {
+    "name": "gpt-4o-2024-05-13",
+    "description": "gpt-4o-2024-05-13",
+    "type": "openai",
+    "context_length": 128000
   },
   {
     "name": "claude-v1.0",
-    "description": "An LLM model named Claude, version 1.0.",
-    "type": "Claude",
-    "strengths": "Capabilities specific to the Claude model, which could include various language processing tasks."
+    "description": "claude-v1.0",
+    "type": "anthropic",
+    "context_length": 9000
   },
   {
     "name": "claude-v1",
-    "description": "An earlier version of the Claude LLM model.",
-    "type": "Claude",
-    "strengths": "Capabilities specific to the Claude model, which could include various language processing tasks."
+    "description": "claude-v1",
+    "type": "anthropic",
+    "context_length": 9000
   },
   {
     "name": "claude-v1-100k",
-    "description": "An enhanced version of the Claude v1 model with a larger parameter size of 100k.",
-    "type": "Claude",
-    "strengths": "Improved performance and capability due to the larger parameter size, suitable for more complex tasks."
+    "description": "claude-v1-100k",
+    "type": "anthropic",
+    "context_length": 100000
   },
   {
     "name": "claude-instant-v1.0",
-    "description": "An instant version of the Claude LLM model, version 1.0.",
-    "type": "Claude",
-    "strengths": "Capabilities specific to the Claude Instant model, which could include various language processing tasks."
+    "description": "claude-instant-v1.0",
+    "type": "anthropic",
+    "context_length": 9000
   },
   {
     "name": "claude-instant-v1",
-    "description": "An earlier version of the Claude Instant LLM model.",
-    "type": "Claude",
-    "strengths": "Capabilities specific to the Claude Instant model, which could include various language processing tasks."
+    "description": "claude-instant-v1",
+    "type": "anthropic",
+    "context_length": 9000
   },
   {
     "name": "claude-instant-v1-100k",
-    "description": "An enhanced instant version of the Claude Instant v1 model with a larger parameter size of 100k.",
-    "type": "Claude",
-    "strengths": "Improved performance and capability due to the larger parameter size, suitable for more complex tasks."
+    "description": "claude-instant-v1-100k",
+    "type": "anthropic",
+    "context_length": 100000
   },
   {
     "name": "claude-instant-v1.1",
-    "description": "An updated instant version of the Claude Instant LLM model, version 1.1.",
-    "type": "Claude",
-    "strengths": "Capabilities specific to the Claude Instant model, which could include various language processing tasks."
+    "description": "claude-instant-v1.1",
+    "type": "anthropic",
+    "context_length": 9000
   },
   {
     "name": "claude-instant-v1.1-100k",
-    "description": "An enhanced instant version of the Claude Instant v1.1 model with a larger parameter size of 100k.",
-    "type": "Claude",
-    "strengths": "Improved performance and capability due to the larger parameter size, suitable for more complex tasks."
+    "description": "claude-instant-v1.1-100k",
+    "type": "anthropic",
+    "context_length": 100000
   },
   {
     "name": "claude-v1.2",
-    "description": "An updated version of the Claude LLM model, version 1.2.",
-    "type": "Claude",
-    "strengths": "Capabilities specific to the Claude model, which could include various language processing tasks."
+    "description": "claude-v1.2",
+    "type": "anthropic",
+    "context_length": 9000
   },
   {
     "name": "claude-v1.3",
-    "description": "An updated version of the Claude LLM model, version 1.3.",
-    "type": "Claude",
-    "strengths": "Capabilities specific to the Claude model, which could include various language processing tasks."
+    "description": "claude-v1.3",
+    "type": "anthropic",
+    "context_length": 9000
   },
   {
     "name": "claude-v1.3-100k",
-    "description": "An enhanced version of the Claude v1.3 model with a larger parameter size of 100k.",
-    "type": "Claude",
-    "strengths": "Improved performance and capability due to the larger parameter size, suitable for more complex tasks."
+    "description": "claude-v1.3-100k",
+    "type": "anthropic",
+    "context_length": 100000
   },
   {
     "name": "claude-2",
-    "description": "The second version of the Claude LLM model.",
-    "type": "Claude",
-    "strengths": "Capabilities specific to the Claude model, which could include various language processing tasks."
+    "description": "claude-2",
+    "type": "anthropic",
+    "context_length": 200000
   },
   {
     "name": "claude-2.0",
-    "description": "An updated version of the Claude LLM model, version 2.0.",
-    "type": "Claude",
-    "strengths": "Capabilities specific to the Claude model, which could include various language processing tasks."
+    "description": "claude-2.0",
+    "type": "anthropic",
+    "context_length": 100000
   },
-
+  {
+    "name": "claude-2.1",
+    "description": "claude-2.1",
+    "type": "anthropic",
+    "context_length": 200000
+  },
+  {
+    "name": "claude-3-opus-20240229",
+    "description": "claude-3-opus-20240229",
+    "type": "anthropic",
+    "context_length": 200000
+  },
+  {
+    "name": "claude-3-sonnet-20240229",
+    "description": "claude-3-sonnet-20240229",
+    "type": "anthropic",
+    "context_length": 200000
+  },
+  {
+    "name": "claude-3-haiku-20240307",
+    "description": "claude-3-haiku-20240307",
+    "type": "anthropic",
+    "context_length": 200000
+  },
+  {
+    "name": "claude-3-5-sonnet-20240620",
+    "description": "claude-3-5-sonnet-20240620",
+    "type": "anthropic",
+    "context_length": 200000
+  },
   {
     "name": "gemini-pro",
-    "description": "An advanced LLM model with capabilities tailored for professional use, possibly including specialized language processing tasks.",
-    "type": "Gemini",
-    "strengths": "Capabilities specific to professional use, which could include advanced language processing tasks."
+    "description": "gemini-pro",
+    "type": "google",
+    "context_length": 32768
+  },
+  {
+    "name": "gemini-1.0-pro-002",
+    "description": "gemini-1.0-pro-002",
+    "type": "google",
+    "context_length": 32768
+  },
+  {
+    "name": "gemini-1.5-pro-preview-0409",
+    "description": "gemini-1.5-pro-preview-0409",
+    "type": "google",
+    "context_length": 32768
+  },
+  {
+    "name": "gemini-1.5-pro-preview-0514",
+    "description": "gemini-1.5-pro-preview-0514",
+    "type": "google",
+    "context_length": 32768
+  },
+  {
+    "name": "gemini-1.5-flash-preview-0514",
+    "description": "gemini-1.5-flash-preview-0514",
+    "type": "google",
+    "context_length": 32768
   },
   {
     "name": "text-unicorn@001",
-    "description": "An LLM model named Text Unicorn, version 001.",
-    "type": "Others",
-    "strengths": "Capabilities specific to the Text Unicorn model, which could include various language processing tasks."
+    "description": "text-unicorn@001",
+    "type": "google",
+    "context_length": 8192
+  },
+  {
+    "name": "mistral-large-latest",
+    "description": "mistral-large-latest",
+    "type": "mistral",
+    "context_length": 8000
   }
 ]

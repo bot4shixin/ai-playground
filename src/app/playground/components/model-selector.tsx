@@ -16,12 +16,6 @@ import {
   CommandList,
 } from "@/components/ui/command"
 import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card"
-import { Label } from "@/components/ui/label"
-import {
   Popover,
   PopoverContent,
   PopoverTrigger,
@@ -62,57 +56,31 @@ export function ModelSelector({ models, defaultValue, emitSelectedModel, types, 
           </Button>
         </PopoverTrigger>
         <PopoverContent align="end" className="w-[250px] p-0">
-          <HoverCard>
-            <HoverCardContent
-              side="left"
-              align="start"
-              forceMount
-              className="min-h-[280px]"
-            >
-              <div className="grid gap-2">
-                <h4 className="font-medium leading-none">{peekedModel.name}</h4>
-                <div className="text-sm text-muted-foreground">
-                  {peekedModel.description}
-                </div>
-                {peekedModel.strengths ? (
-                  <div className="mt-4 grid gap-2">
-                    <h5 className="text-sm font-medium leading-none">
-                      Strengths
-                    </h5>
-                    <ul className="text-sm text-muted-foreground">
-                      {peekedModel.strengths}
-                    </ul>
-                  </div>
-                ) : null}
-              </div>
-            </HoverCardContent>
-            <Command loop>
-              <CommandList className="h-[var(--cmdk-list-height)] max-h-[400px]">
-                <CommandInput placeholder="Search Models..." />
-                <CommandEmpty>No Models found.</CommandEmpty>
-                <HoverCardTrigger />
-                {types.map((type) => (
-                  <CommandGroup key={type} heading={type}>
-                    {models
-                      .filter((model) => model.type === type)
-                      .map((model) => (
-                        <ModelItem
-                          key={model.name}
-                          model={model}
-                          isSelected={selectedModel?.name === model.name}
-                          onPeek={(model) => setPeekedModel(model)}
-                          onSelect={() => {
-                            setSelectedModel(model)
-                            emitSelectedModel?.(model)
-                            setOpen(false)
-                          }}
-                        />
-                      ))}
-                  </CommandGroup>
-                ))}
-              </CommandList>
-            </Command>
-          </HoverCard>
+          <Command loop>
+            <CommandList className="h-[var(--cmdk-list-height)] max-h-[400px]">
+              <CommandInput placeholder="Search Models..." />
+              <CommandEmpty>No Models found.</CommandEmpty>
+              {types.map((type) => (
+                <CommandGroup key={type} heading={type}>
+                  {models
+                    .filter((model) => model.type === type)
+                    .map((model) => (
+                      <ModelItem
+                        key={model.name}
+                        model={model}
+                        isSelected={selectedModel?.name === model.name}
+                        onPeek={(model) => setPeekedModel(model)}
+                        onSelect={() => {
+                          setSelectedModel(model)
+                          emitSelectedModel?.(model)
+                          setOpen(false)
+                        }}
+                      />
+                    ))}
+                </CommandGroup>
+              ))}
+            </CommandList>
+          </Command>
         </PopoverContent>
       </Popover>
     </div>

@@ -24,7 +24,7 @@ import { PresetSelector } from "./components/preset-selector"
 import { PresetShare } from "./components/preset-share"
 
 import { presets } from "./data/presets"
-import {apiCallZoomGateway} from "@/lib/api-requests"
+import {apiCallCustomGateway} from "@/lib/api-requests"
 import { useState } from "react"
 import { MessageComp } from "./components/message-content"
 import { ReloadIcon } from "@radix-ui/react-icons"
@@ -116,7 +116,7 @@ export default function PlaygroundPage() {
     setModelTwoRes('')
   }
   const callZoomGateway = async (modelName: string) => {
-    return apiCallZoomGateway({
+    return apiCallCustomGateway({
       messages: [
         {
           role: "user",
