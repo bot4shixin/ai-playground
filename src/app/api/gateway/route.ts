@@ -17,7 +17,6 @@ export async function POST(request: Request) {
         model, 
         task_id, 
         top_p,
-        max_tokens,
         choices,
         user_name,  
         temperature,

@@ -98,7 +98,7 @@ export default function PlaygroundPage() {
   const [temperature] = useAtom(StoreAtom.temperatureAtom)
   const [topP] = useAtom(StoreAtom.top_pAtom)
   const [maxTokens] = useAtom(StoreAtom.max_tokensAtom)
-  const [prompt, setPrompt] = useAtom(StoreAtom.promptAtom)
+  const [prompt, setPrompt] = useAtom(StoreAtom.promptAtomMeta)
   const [promptRes, setPromptRes] = useAtom(StoreAtom.promptResAtom)
   console.log(promptRes);
   const { isCopied, copyToClipboard } = useCopyToClipboard({ timeout: 2000 })

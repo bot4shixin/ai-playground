@@ -14,7 +14,6 @@ import { Button } from "@/components/ui/button"
 
 
 import { Label } from "@/components/ui/label"
-import { Separator } from "@/components/ui/separator"
 import { Textarea } from "@/components/ui/textarea"
 
 // import { CodeViewer } from "./components/code-viewer"
@@ -120,11 +119,11 @@ export default function PlaygroundPage() {
       messages: [
         {
           role: "user",
-          message: instructions
+          message: prompt
         },
         {
-          role: "user",
-          message: prompt
+          role: "assistant",
+          message: instructions
         },
         // {
         //   role: "user",

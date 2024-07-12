@@ -23,6 +23,10 @@ export const promptAtom = atomWithStorage<string>(
   'promptAtom',
   '',
 );
+export const promptAtomMeta = atomWithStorage<string>(
+  'promptAtomMeta',
+  '',
+);
 export const instructionsAtom = atomWithStorage<string>(
   'instructionsAtom',
   '',
