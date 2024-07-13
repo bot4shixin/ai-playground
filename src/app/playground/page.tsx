@@ -114,7 +114,7 @@ export default function PlaygroundPage() {
     setModelOneRes('')
     setModelTwoRes('')
   }
-  const callZoomGateway = async (modelName: string) => {
+  const callCustomeGateway = async (modelName: string) => {
     return apiCallCustomGateway({
       messages: [
         {
@@ -146,7 +146,7 @@ export default function PlaygroundPage() {
 
     Promise.all([
       (performance.mark('start_api_call') && 
-      callZoomGateway(selectedModel1.name).then((res1) => {
+      callCustomeGateway(selectedModel1.name).then((res1) => {
         setModelOneRes(() => {
           const re = formatGatewayResponse(res1)
           return re
@@ -155,7 +155,7 @@ export default function PlaygroundPage() {
        
       })), 
       ( compareModel && performance.mark('start_api_call2')
-       && callZoomGateway(selectedModel2.name).then((res2) => {
+       && callCustomeGateway(selectedModel2.name).then((res2) => {
          setModelTwoRes(() => {
            const re = formatGatewayResponse(res2)
            return re

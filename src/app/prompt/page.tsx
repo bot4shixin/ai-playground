@@ -3,45 +3,20 @@
 // import Image from "next/image"
 import { useHotkeys } from 'react-hotkeys-hook';
 import { toast } from "sonner";
-import { Card, CardContent } from "@/components/ui/card"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
-
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "@/components/ui/resizable"
-
 import { Button } from "@/components/ui/button"
-
 import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
 
 import { Label } from "@/components/ui/label"
-import { Separator } from "@/components/ui/separator"
 import { Textarea } from "@/components/ui/textarea"
 
-// import { CodeViewer } from "./components/code-viewer"
-// import { PresetActions } from "./components/preset-actions"
-// import { PresetSave } from "./components/preset-save"
-import { PresetSelector } from "./components/preset-selector"
-import { PresetShare } from "./components/preset-share"
 
-import { presets } from "./data/presets"
 import {apiCallCustomGateway} from "@/lib/api-requests"
 import { useState } from "react"
 import { MessageComp } from "./components/message-content"
@@ -50,13 +25,10 @@ import * as StoreAtom from "@/lib/store/atom"
 import { useAtom } from "jotai";
 import {ModelConfig} from "./ModelConfig"
 import ThemeToggle from "@/components/layout/ThemeToggle/theme-toggle";
-import { ScrollArea } from '@/components/ui/scroll-area';
 import { useCopyToClipboard } from '@/lib/hooks/use-copy-to-clipboard';
 import { IconCheck, IconCopy } from '@/components/icons';
 import { Share } from 'lucide-react';
 import { Nav } from '@/components/nav';
-
-
 
 function formatGatewayResponse(response: any) {
   const result = response?.data?.result
@@ -132,7 +104,7 @@ export default function PlaygroundPage() {
     if (isCopied) return
     copyToClipboard(value)
   }
-  const callZoomGateway = async (modelName: string, message: string) => {
+  const callCustomeGateway = async (modelName: string, message: string) => {
     return apiCallCustomGateway({
       messages: [
         {
@@ -168,7 +140,7 @@ export default function PlaygroundPage() {
     let cur_task_prompt = buildInstructions(prompt.split('\n'));
     for (let i = 0; i < num_round; i++) {
       console.log(`\n${'*'.repeat(100)}\n 👇Optimizing Round: ${i + 1}`);
-      const response = await callZoomGateway(gpt4Model.name, cur_task_prompt)
+      const response = await callCustomeGateway(gpt4Model.name, cur_task_prompt)
       const re = formatGatewayResponse(response).replace('<OPTIMIZED PROMPT>', '').replace('</OPTIMIZED PROMPT>', '').trim()
       const result = re.replace(/^"+|"+$/g, '').trim().replace(/^"+|"+$/g, '').trim().replace(/^"+|"+$/g, '').trim()
       console.log(result);

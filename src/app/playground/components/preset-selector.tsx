@@ -75,7 +75,7 @@ export function PresetSelector({ onChange, presets, ...props }: PresetSelectorPr
             ))}
           </CommandGroup>
           <CommandGroup className="pt-0">
-            <CommandItem onSelect={() => router.push("https://zoomvideo.atlassian.net/wiki/spaces/~327924349/pages/3068437447/Prompt+Preset+Collections")}>
+            <CommandItem onSelect={() => router.push("/")}>
               More examples
             </CommandItem>
           </CommandGroup>
