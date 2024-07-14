@@ -2,7 +2,6 @@
 import {
   Share,
 } from "lucide-react"
-import {useLiveQuery} from "dexie-react-hooks"
 import {Nav} from "@/components/nav"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
