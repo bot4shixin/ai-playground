@@ -3,7 +3,6 @@
 // import Image from "next/image"
 import { useHotkeys } from 'react-hotkeys-hook';
 import { toast } from "sonner";
-
 import {
   ResizableHandle,
   ResizablePanel,
@@ -11,17 +10,13 @@ import {
 } from "@/components/ui/resizable"
 
 import { Button } from "@/components/ui/button"
-
-
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-
 // import { CodeViewer } from "./components/code-viewer"
 // import { PresetActions } from "./components/preset-actions"
 // import { PresetSave } from "./components/preset-save"
 import { PresetSelector } from "./components/preset-selector"
 import { PresetShare } from "./components/preset-share"
-
 import { presets } from "./data/presets"
 import {apiCallCustomGateway} from "@/lib/api-requests"
 import { useState } from "react"
@@ -31,7 +26,6 @@ import * as StoreAtom from "@/lib/store/atom"
 import { useAtom } from "jotai";
 import {ModelConfig} from "./ModelConfig"
 import ThemeToggle from "@/components/layout/ThemeToggle/theme-toggle";
-import { Share } from 'lucide-react';
 import { Nav } from '@/components/nav';
 
 function BottomActions({
@@ -89,7 +83,6 @@ export default function PlaygroundPage() {
   const [loading, setLoading] = useState(false)
   const [modelResponseTime1, setModelResponseTime1] = useState('')
   const [modelResponseTime2, setModelResponseTime2] = useState('')
-
   useHotkeys(
     'mod+i',
     () => {
@@ -114,7 +107,7 @@ export default function PlaygroundPage() {
     setModelOneRes('')
     setModelTwoRes('')
   }
-  const callCustomeGateway = async (modelName: string) => {
+  const callCustomGateway = async (modelName: string) => {
     return apiCallCustomGateway({
       messages: [
         {
@@ -146,7 +139,7 @@ export default function PlaygroundPage() {
 
     Promise.all([
       (performance.mark('start_api_call') && 
-      callCustomeGateway(selectedModel1.name).then((res1) => {
+      callCustomGateway(selectedModel1.name).then((res1) => {
         setModelOneRes(() => {
           const re = formatGatewayResponse(res1)
           return re
@@ -155,7 +148,7 @@ export default function PlaygroundPage() {
        
       })), 
       ( compareModel && performance.mark('start_api_call2')
-       && callCustomeGateway(selectedModel2.name).then((res2) => {
+       && callCustomGateway(selectedModel2.name).then((res2) => {
          setModelTwoRes(() => {
            const re = formatGatewayResponse(res2)
            return re

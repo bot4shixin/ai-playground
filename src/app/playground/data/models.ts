@@ -289,8 +289,7 @@ export const models: Model<ModelType>[] = [
   }
 ]
 
-const largestContextLength = models.reduce((max, model) => {
+const findLargestContextLength = () => models.reduce((max, model) => {
   return model.context_length > max ? model.context_length : max;
 }, 0);
 
-console.log("The largest context length is:", largestContextLength);

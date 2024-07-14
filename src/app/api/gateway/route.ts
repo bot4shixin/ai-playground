@@ -1,15 +1,19 @@
 import { LLM_Params } from "@/types";
 import { NextResponse } from "next/server";
-
+import { CustomModel } from "@/types";
 
 export async function POST(request: Request) {
   try {
     const json= await request.json();
-    const { messages, model, task_id, user_name, temperature, top_p, max_tokens, choices } = json as LLM_Params;
-    const res = await fetch(process.env.GATEWAY_API!, {
+    const { messages, model, task_id, user_name, temperature, top_p, max_tokens, choices, apiPath= process.env.GATEWAY_API, apiSecret  = process.env.GATEWAY_TOKEN} = json as LLM_Params & CustomModel;
+
+    if (!apiPath) {
+      throw new Error("apiPath are required");
+    }
+    const res = await fetch(apiPath, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${process.env.GATEWAY_TOKEN}`,
+        'Authorization': `Bearer ${apiSecret}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({

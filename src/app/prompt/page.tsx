@@ -104,7 +104,7 @@ export default function PlaygroundPage() {
     if (isCopied) return
     copyToClipboard(value)
   }
-  const callCustomeGateway = async (modelName: string, message: string) => {
+  const callCustomGateway = async (modelName: string, message: string) => {
     return apiCallCustomGateway({
       messages: [
         {
@@ -140,7 +140,7 @@ export default function PlaygroundPage() {
     let cur_task_prompt = buildInstructions(prompt.split('\n'));
     for (let i = 0; i < num_round; i++) {
       console.log(`\n${'*'.repeat(100)}\n 👇Optimizing Round: ${i + 1}`);
-      const response = await callCustomeGateway(gpt4Model.name, cur_task_prompt)
+      const response = await callCustomGateway(gpt4Model.name, cur_task_prompt)
       const re = formatGatewayResponse(response).replace('<OPTIMIZED PROMPT>', '').replace('</OPTIMIZED PROMPT>', '').trim()
       const result = re.replace(/^"+|"+$/g, '').trim().replace(/^"+|"+$/g, '').trim().replace(/^"+|"+$/g, '').trim()
       console.log(result);
