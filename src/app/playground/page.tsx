@@ -145,7 +145,6 @@ export default function PlaygroundPage() {
           return re
         })
         performance.mark('end_api_call')
-       
       })), 
       ( compareModel && performance.mark('start_api_call2')
        && callCustomGateway(selectedModel2.name).then((res2) => {

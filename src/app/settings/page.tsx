@@ -1,28 +1,12 @@
+"use client"
 import {
-  Bird,
-  CornerDownLeft,
-  Mic,
-  Paperclip,
-  Rabbit,
   Share,
-  Turtle,
 } from "lucide-react"
-import { nanoid } from '@/lib/utils'
-import { Chat } from '@/components/chat'
-import { AI } from '@/lib/chat/actions'
-import { auth } from '@/auth'
-import { Session } from '@/lib/types'
-import { getMissingKeys } from '@/app/actions'
+import {useLiveQuery} from "dexie-react-hooks"
 import {Nav} from "@/components/nav"
-import { Badge } from "@/components/ui/badge"
-import { Label } from "@/components/ui/label"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
-import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
-import { CircleUser, Menu, Package2, Search } from "lucide-react"
-
+import { CustomModel as  Model } from "@/types"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -33,21 +17,41 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { useState } from "react"
+import { nanoid } from "nanoid"
+import { Separator } from "@/components/ui/separator"
+import { Label } from "@/components/ui/label"
+import * as StoreAtom from "@/lib/store/atom"
+import { useAtom } from "jotai";
 
+export default function() {
+  const [models, setModels] = useAtom(StoreAtom.aiCustomModels);
+  const addModel = async (model: Model) => {
+    setModels(models => {
+      return [...models, {
+        ...model,
+        id: nanoid()
+      }]
+    })
+  }
+  const updateModel = async (id: string, newModel: Model) => {
+    setModels(
+      models.map((model) => {
+        if (model.id === id) {
+          return newModel;
+        }
+        return model;
+      })  
+    )
+  }
+  const [editingModel, setEditingModel] = useState<Model>({
+    name: "",
+    apiPath: "",
+    apiSecret: "",
+    id: "",
+    isDefault: false
+  });
 
-export default async function() {
-  const id = nanoid()
-  const session = (await auth()) as Session
-  const missingKeys = await getMissingKeys()
   return (
     <div className="grid min-h-screen w-full pl-[69px]">
       <Nav currentPath="/chat"/>
@@ -73,14 +77,14 @@ export default async function() {
               <Link href="/settings#general" className="font-semibold text-primary">
               General
               </Link>
-              <Link href="/settings#security">Security</Link>
+              <Link href="/settings#security" scroll>Security</Link>
               <Link href="#">Integrations</Link>
               <Link href="#Support">Support</Link>
               <Link href="#">Organizations</Link>
               <Link href="#">Advanced</Link>
             </nav>
             <div className="grid gap-6">
-              <Card x-chunk="dashboard-04-chunk-1" id="#general">
+              {/* <Card x-chunk="dashboard-04-chunk-1">
                 <CardHeader>
                   <CardTitle>Store Name</CardTitle>
                   <CardDescription>
@@ -95,300 +99,91 @@ export default async function() {
                 <CardFooter className="border-t px-6 py-4">
                   <Button>Save</Button>
                 </CardFooter>
-              </Card>
-              <Card x-chunk="dashboard-04-chunk-2" id="#Security">
+              </Card> */}
+              <Card x-chunk="dashboard-04-chunk-1">
                 <CardHeader>
-                  <CardTitle>11 Plugins Directory</CardTitle>
+                  <CardTitle>Integration</CardTitle>
                   <CardDescription>
-                  The directory within your project, in which your plugins are
-                  located.
+                    Used to add Model to your playground. (date only store in your browser, no data is sent to the cloud)
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <form className="flex flex-col gap-4">
-                    <Input
-                      placeholder="Project Name"
-                      defaultValue="/content/plugins"
-                    />
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="include" defaultChecked />
-                      <label
-                        htmlFor="include"
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                      Allow administrators to change the directory.
-                      </label>
-                    </div>
-                  </form>
-                </CardContent>
-                <CardFooter className="border-t px-6 py-4">
-                  <Button>Save</Button>
-                </CardFooter>
-              </Card>
+                <CardContent className="grid gap-6">
+                  <h1>Models: </h1>
+                  {models?.map((model) => (
+                    <div key={model.id}>
+                      <form className="gap-6 grid">
+                        
+                        <div className="flex items-center space-x-2 justify-between">
+                          <Label> {model.name}</Label>
+                          <div className="flex items-center">
+                            <Checkbox id={model.id} defaultChecked={model.isDefault} onCheckedChange={(v) => {
+                              console.log(v);
+                              updateModel(model.id, {
+                                ...model,
+                                isDefault: !!v
+                              })
+                            }}/>
+                            <label
+                              htmlFor={model.id}
+                              className="ml-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                            >
+                              Default
+                            </label>
+                          </div>
 
-              <Card x-chunk="dashboard-04-chunk-2" id="#Support">
-                <CardHeader>
-                  <CardTitle>11 Plugins Directory</CardTitle>
-                  <CardDescription>
-                  The directory within your project, in which your plugins are
-                  located.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <form className="flex flex-col gap-4">
-                    <Input
-                      placeholder="Project Name"
-                      defaultValue="/content/plugins"
-                    />
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="include" defaultChecked />
-                      <label
-                        htmlFor="include"
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                      Allow administrators to change the directory.
-                      </label>
+                        </div>
+                        <Input placeholder="Model Name" value={model.name} onInput = { (e) => setEditingModel(a =>{
+                          return {
+                            ...a,
+                            name: (e.target as HTMLTextAreaElement).value || ''
+                          }
+                        })}/>
+                        <Input placeholder="Model API Url" value={model.apiPath} onInput = { (e) => setEditingModel(a =>{
+                          return {
+                            ...a,
+                            apiPath: (e.target as HTMLTextAreaElement).value || ''
+                          }
+                        })}/>
+                        <Input placeholder="Model API Key" type="password" value={model.apiSecret} onInput = { (e) => setEditingModel(a =>{
+                          return {
+                            ...a,
+                            apiSecret: (e.target as HTMLTextAreaElement).value || ''
+                          }
+                        })}/>
+                      </form>
+                      <Separator />
+                      {/* <Button onClick={() => updateModel(model.id, editingModel)}>Save</Button> */}
                     </div>
+                  ))}
+                  <form className="gap-6 grid">
+                    <Label>Add New AI API Gateway</Label>
+                    <Input placeholder="Model Name"  onInput = { (e) => setEditingModel(a =>{
+                      return {
+                        ...a,
+                        name: (e.target as HTMLTextAreaElement).value || ''
+                      }
+                    })}/>
+                    <Input placeholder="Model API Url"  onInput = { (e) => setEditingModel(a =>{
+                      return {
+                        ...a,
+                        apiPath: (e.target as HTMLTextAreaElement).value || ''
+                      }
+                    })}/>
+                    <Input placeholder="Model API Key" type="password"  onInput = { (e) => setEditingModel(a =>{
+                      return {
+                        ...a,
+                        apiSecret: (e.target as HTMLTextAreaElement).value || ''
+                      }
+                    })}/>
+                    <Button onClick={() => addModel(editingModel)}>Add New Model</Button>
                   </form>
                 </CardContent>
-                <CardFooter className="border-t px-6 py-4">
-                  <Button>Save</Button>
-                </CardFooter>
+                {/* <CardFooter className="border-t px-6 py-4 gap-4">
+                  
+                </CardFooter> */}
               </Card>
-              <Card x-chunk="dashboard-04-chunk-2" id="#Support">
-                <CardHeader>
-                  <CardTitle>11 Plugins Directory</CardTitle>
-                  <CardDescription>
-                  The directory within your project, in which your plugins are
-                  located.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <form className="flex flex-col gap-4">
-                    <Input
-                      placeholder="Project Name"
-                      defaultValue="/content/plugins"
-                    />
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="include" defaultChecked />
-                      <label
-                        htmlFor="include"
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                      Allow administrators to change the directory.
-                      </label>
-                    </div>
-                  </form>
-                </CardContent>
-                <CardFooter className="border-t px-6 py-4">
-                  <Button>Save</Button>
-                </CardFooter>
-              </Card>
-              <Card x-chunk="dashboard-04-chunk-2" id="#Support">
-                <CardHeader>
-                  <CardTitle>11 Plugins Directory</CardTitle>
-                  <CardDescription>
-                  The directory within your project, in which your plugins are
-                  located.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <form className="flex flex-col gap-4">
-                    <Input
-                      placeholder="Project Name"
-                      defaultValue="/content/plugins"
-                    />
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="include" defaultChecked />
-                      <label
-                        htmlFor="include"
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                      Allow administrators to change the directory.
-                      </label>
-                    </div>
-                  </form>
-                </CardContent>
-                <CardFooter className="border-t px-6 py-4">
-                  <Button>Save</Button>
-                </CardFooter>
-              </Card>
-              <Card x-chunk="dashboard-04-chunk-2" id="#Support">
-                <CardHeader>
-                  <CardTitle>11 Plugins Directory</CardTitle>
-                  <CardDescription>
-                  The directory within your project, in which your plugins are
-                  located.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <form className="flex flex-col gap-4">
-                    <Input
-                      placeholder="Project Name"
-                      defaultValue="/content/plugins"
-                    />
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="include" defaultChecked />
-                      <label
-                        htmlFor="include"
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                      Allow administrators to change the directory.
-                      </label>
-                    </div>
-                  </form>
-                </CardContent>
-                <CardFooter className="border-t px-6 py-4">
-                  <Button>Save</Button>
-                </CardFooter>
-              </Card>
-              <Card x-chunk="dashboard-04-chunk-2" id="#Support">
-                <CardHeader>
-                  <CardTitle>11 Plugins Directory</CardTitle>
-                  <CardDescription>
-                  The directory within your project, in which your plugins are
-                  located.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <form className="flex flex-col gap-4">
-                    <Input
-                      placeholder="Project Name"
-                      defaultValue="/content/plugins"
-                    />
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="include" defaultChecked />
-                      <label
-                        htmlFor="include"
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                      Allow administrators to change the directory.
-                      </label>
-                    </div>
-                  </form>
-                </CardContent>
-                <CardFooter className="border-t px-6 py-4">
-                  <Button>Save</Button>
-                </CardFooter>
-              </Card>
-              <Card x-chunk="dashboard-04-chunk-2" id="#Support">
-                <CardHeader>
-                  <CardTitle>11 Plugins Directory</CardTitle>
-                  <CardDescription>
-                  The directory within your project, in which your plugins are
-                  located.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <form className="flex flex-col gap-4">
-                    <Input
-                      placeholder="Project Name"
-                      defaultValue="/content/plugins"
-                    />
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="include" defaultChecked />
-                      <label
-                        htmlFor="include"
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                      Allow administrators to change the directory.
-                      </label>
-                    </div>
-                  </form>
-                </CardContent>
-                <CardFooter className="border-t px-6 py-4">
-                  <Button>Save</Button>
-                </CardFooter>
-              </Card>
-              <Card x-chunk="dashboard-04-chunk-2" id="#Support">
-                <CardHeader>
-                  <CardTitle>11 Plugins Directory</CardTitle>
-                  <CardDescription>
-                  The directory within your project, in which your plugins are
-                  located.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <form className="flex flex-col gap-4">
-                    <Input
-                      placeholder="Project Name"
-                      defaultValue="/content/plugins"
-                    />
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="include" defaultChecked />
-                      <label
-                        htmlFor="include"
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                      Allow administrators to change the directory.
-                      </label>
-                    </div>
-                  </form>
-                </CardContent>
-                <CardFooter className="border-t px-6 py-4">
-                  <Button>Save</Button>
-                </CardFooter>
-              </Card>
-              <Card x-chunk="dashboard-04-chunk-2" id="#Support">
-                <CardHeader>
-                  <CardTitle>11 Plugins Directory</CardTitle>
-                  <CardDescription>
-                  The directory within your project, in which your plugins are
-                  located.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <form className="flex flex-col gap-4">
-                    <Input
-                      placeholder="Project Name"
-                      defaultValue="/content/plugins"
-                    />
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="include" defaultChecked />
-                      <label
-                        htmlFor="include"
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                      Allow administrators to change the directory.
-                      </label>
-                    </div>
-                  </form>
-                </CardContent>
-                <CardFooter className="border-t px-6 py-4">
-                  <Button>Save</Button>
-                </CardFooter>
-              </Card>
-              <Card x-chunk="dashboard-04-chunk-2" id="#Support">
-                <CardHeader>
-                  <CardTitle>11 Plugins Directory</CardTitle>
-                  <CardDescription>
-                  The directory within your project, in which your plugins are
-                  located.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <form className="flex flex-col gap-4">
-                    <Input
-                      placeholder="Project Name"
-                      defaultValue="/content/plugins"
-                    />
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="include" defaultChecked />
-                      <label
-                        htmlFor="include"
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                      Allow administrators to change the directory.
-                      </label>
-                    </div>
-                  </form>
-                </CardContent>
-                <CardFooter className="border-t px-6 py-4">
-                  <Button>Save</Button>
-                </CardFooter>
-              </Card>
+             
             </div>
-            
           </div>
         </main>
       </div>

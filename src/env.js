@@ -14,7 +14,8 @@ export const env = createEnv({
         (str) => !str.includes("YOUR_MYSQL_URL_HERE"),
         "You forgot to change the default URL"
       ),
-    GATEWAY_API: z.string().url(),
+    GATEWAY_TOKEN: z.string().optional(),
+    GATEWAY_API: z.string().url().optional(),
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
@@ -52,6 +53,7 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     GATEWAY_API: process.env.GATEWAY_API,
+    GATEWAY_TOKEN: process.env.GATEWAY_TOKEN,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     // DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
     // DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,

@@ -86,3 +86,19 @@ export const getMessageFromCode = (resultCode: string) => {
     return 'Logged in!'
   }
 }
+
+
+
+export const getValueFromStorage = (key: string, defaultValue?: any) => {
+  const storedValue = localStorage.getItem(key);
+  if (storedValue === null) {
+    return defaultValue;
+  }
+  console.log(storedValue);
+  try {
+    return JSON.parse(storedValue);
+  } catch (error) {
+    console.error("Error parsing stored value:", error);
+    return defaultValue;
+  }
+};

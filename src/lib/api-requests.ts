@@ -1,5 +1,6 @@
 import { toast } from "sonner";
-import {LLM_Params} from "src/types";
+import {CustomModel, LLM_Params} from "src/types";
+import { getValueFromStorage } from "@/lib/utils";
 export type ErrorResponse = {
   status: string;
   message: string;
@@ -49,6 +50,9 @@ export async function apiCallCustomGateway({
   messages, model,
   task_id, user_name, temperature, top_p, max_tokens, choices
 }: LLM_Params): Promise<ApiResponse<unknown>> {
+  const models = getValueFromStorage("aiCustomModels");
+  const defaultModel = models.find((m: CustomModel) => m.isDefault);
+  const {apiPath = process.env.GATEWAY_TOKEN, apiSecret = process.env.GATEWAY_TOKEN} = defaultModel
   const response = await fetch(`${SERVER_ENDPOINT}/api/gateway`, {
     method: "POST",
     headers: {
@@ -63,6 +67,8 @@ export async function apiCallCustomGateway({
       choices,
       user_name,  
       temperature,
+      apiPath,
+      apiSecret
     }),
   });
 

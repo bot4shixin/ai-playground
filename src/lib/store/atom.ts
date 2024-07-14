@@ -1,6 +1,7 @@
 import { atom } from 'jotai';
 import { atomWithStorage } from 'jotai/utils';
 import { Model, models, types } from "@/app/playground/data/models"
+import { CustomModel } from '@/types';
 export const gpt4ModelAtom = atomWithStorage<Model>(
   'gpt4ModelAtom',
     models.find((model) => model.name === "gpt-4")!,
@@ -61,3 +62,9 @@ export const promptResAtom = atomWithStorage<string[]>(
 );
 
 
+
+
+export const aiCustomModels = atomWithStorage<CustomModel[]>(
+  'aiCustomModels',
+  [],
+);

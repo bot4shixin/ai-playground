@@ -105,3 +105,10 @@ export type LLM_Params = {
   max_tokens: number // The maximum number of tokens to generate before stopping.
   choices: number,
 }
+export type CustomModel = {
+  id: string;
+  name: string;
+  apiPath: string,
+  apiSecret: string,
+  isDefault: boolean
+}
