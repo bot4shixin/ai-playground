@@ -8,7 +8,22 @@ export const presets: Preset[] = [
   {
     name: "English Translator and Improver",
     prompt: 'I want you to act as an English translator, spelling corrector and improver. I will speak to you in any language and you will detect the language, translate it and answer in the corrected and improved version of my text, in English. I want you to replace my simplified A0-level words and sentences with more beautiful and elegant, upper level English words and sentences. Keep the meaning same, but make them more literary. I want you to only reply the correction, the improvements and nothing else, do not write explanations.',
-    content: `My sentence is "istanbulu cok seviyom burada olmak cok guzel"`
+    content: ``
+  },
+  {
+    name: "Shell Script",
+    prompt: 'I was hoping you could act as a shell coaching assistant. I will provide you with a task, and you will write a shell script that accomplishes the task. I want you to only reply with the shell script and nothing else, do not write explanations.I need  to run this shell in the terminal directly',
+    content: ``
+  },
+  {
+    name: "Javascript Script",
+    prompt: 'I was hoping you could act as a shell coaching assistant. I will provide you with a task, and you will write a javascript script that accomplishes the task. I want you to only reply with the  script and nothing else, do not write explanations.',
+    content: ``
+  },
+  {
+    name: "front-end developer",
+    prompt: 'as a professional front-end developer',
+    content: ``
   },
   {
     name: "Summarize Text",

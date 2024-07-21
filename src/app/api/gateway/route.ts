@@ -27,6 +27,7 @@ export async function POST(request: Request) {
     }).then(res => res.json()).catch(err => {
       console.log(JSON.stringify(err));
     });
+    console.log(1212, res);
 
 
     const json_response = {
