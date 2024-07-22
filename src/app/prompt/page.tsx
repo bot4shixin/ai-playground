@@ -23,7 +23,7 @@ import { MessageComp } from "./components/message-content"
 import { ReloadIcon } from "@radix-ui/react-icons"
 import * as StoreAtom from "@/lib/store/atom"
 import { useAtom } from "jotai";
-import {ModelConfig} from "./ModelConfig"
+import {ModelConfig} from "@/app/playground/ModelConfig"
 import ThemeToggle from "@/components/layout/ThemeToggle/theme-toggle";
 import { useCopyToClipboard } from '@/lib/hooks/use-copy-to-clipboard';
 import { IconCheck, IconCopy } from '@/components/icons';
@@ -72,7 +72,6 @@ export default function PlaygroundPage() {
   const [maxTokens] = useAtom(StoreAtom.max_tokensAtom)
   const [prompt, setPrompt] = useAtom(StoreAtom.promptAtomMeta)
   const [promptRes, setPromptRes] = useAtom(StoreAtom.promptResAtom)
-  console.log(promptRes);
   const { isCopied, copyToClipboard } = useCopyToClipboard({ timeout: 2000 })
 
   const [loading, setLoading] = useState(false)
@@ -123,33 +122,27 @@ export default function PlaygroundPage() {
    
   }
   const callTwoModels = async () => {
-    console.log(121);
     if (!prompt) return
     setLoading(true)
     setPromptRes(Array(5).fill(''))
 
     await optimizePrompt(roundTime, prompt).catch((e) => {
       toast.error(`Error calling the models ${JSON.stringify(e)}`)
-      console.error(e)
     }).finally(() => {
-      console.log('done2');
       setLoading(false)
     })
   }
   async function optimizePrompt(num_round:number, prompt: string) {
     let cur_task_prompt = buildInstructions(prompt.split('\n'));
     for (let i = 0; i < num_round; i++) {
-      console.log(`\n${'*'.repeat(100)}\n 👇Optimizing Round: ${i + 1}`);
       const response = await callCustomGateway(gpt4Model.name, cur_task_prompt)
       const re = formatGatewayResponse(response).replace('<OPTIMIZED PROMPT>', '').replace('</OPTIMIZED PROMPT>', '').trim()
       const result = re.replace(/^"+|"+$/g, '').trim().replace(/^"+|"+$/g, '').trim().replace(/^"+|"+$/g, '').trim()
-      console.log(result);
       setPromptRes((prev) => {
         return [result, ...prev].slice(0, 5)
       })
       cur_task_prompt = buildInstructions(re)
     }
-    console.log('done');
     return cur_task_prompt;
   }
 

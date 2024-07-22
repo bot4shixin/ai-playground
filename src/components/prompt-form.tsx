@@ -21,10 +21,12 @@ import { useRouter } from 'next/navigation'
 
 export function PromptForm({
   input,
-  setInput
+  setInput,
+  scrollToBottom
 }: {
   input: string
   setInput: (value: string) => void
+  scrollToBottom?: () => void
 }) {
   const router = useRouter()
   const { formRef, onKeyDown } = useEnterSubmit()
@@ -43,7 +45,7 @@ export function PromptForm({
       ref={formRef}
       onSubmit={async (e: any) => {
         e.preventDefault()
-
+        scrollToBottom?.()
         // Blur focus on mobile
         if (window.innerWidth < 600) {
           e.target.message?.blur()
@@ -63,7 +65,7 @@ export function PromptForm({
         ])
 
         // Submit and get response message
-        const responseMessage = await submitUserMessage(value)
+        const responseMessage = await submitUserMessage(value, 'shixin')
         setMessages(currentMessages => [...currentMessages, responseMessage])
       }}
     >

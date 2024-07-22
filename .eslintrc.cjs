@@ -11,6 +11,9 @@ const config = {
     "plugin:@typescript-eslint/stylistic-type-checked",
   ],
   rules: {
+    // These rules are enabled in recommended above.
+    "no-debugger": "warn",
+    "no-console": "warn",
     "indent": ["error", 2],
     // These opinionated rules are enabled in stylistic-type-checked above.
     // Feel free to reconfigure them to your own preference.

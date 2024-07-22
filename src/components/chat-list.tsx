@@ -14,10 +14,10 @@ export function ChatList({ messages, session, isShared }: ChatList) {
   if (!messages.length) {
     return null
   }
-
   return (
     <div className="relative mx-auto max-w-2xl">
-      {!isShared && !session ? (
+      {/* todo login */}
+      {/* {!isShared && !session ? (
         <>
           <div className="group relative m-4 flex items-start">
             <div className="bg-background flex size-[25px] shrink-0 select-none items-center justify-center rounded-md border shadow-sm">
@@ -39,8 +39,8 @@ export function ChatList({ messages, session, isShared }: ChatList) {
           </div>
           <Separator className="my-4" />
         </>
-      ) : null}
-
+      ) : null} */}
+      <Separator className="mb-4 opacity-0" />
       {messages.map((message, index) => (
         <div key={message.id}>
           {message.display}

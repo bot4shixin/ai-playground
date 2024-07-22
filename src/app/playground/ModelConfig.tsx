@@ -12,6 +12,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card"
 import { Label } from "@/components/ui/label"
+import { Separator } from "@radix-ui/react-separator"
 export const ModelConfig = () => {
   const [selectedModel1, setSelectedModel1] = useAtom(StoreAtom.firstModelAtom)
   const [selectedModel2, setSelectedModel2] = useAtom(StoreAtom.secondModelAtom)
@@ -20,7 +21,7 @@ export const ModelConfig = () => {
   const [maxTokens, setMaxTokens] = useAtom(StoreAtom.max_tokensAtom)
   const [compareModel, setCompareModel] = useAtom(StoreAtom.compareModelAtom)
   return (
-    <div className="hidden flex-col space-y-4 sm:flex md:order-2">
+    <div className="hidden flex-col space-y-4 sm:flex md:order-2 mt-6">
       <HoverCard openDelay={200}>
         <HoverCardTrigger asChild>
           <Label htmlFor="model">Model</Label>
@@ -48,6 +49,8 @@ export const ModelConfig = () => {
         
         {compareModel && <ModelSelector types={types} models={models} defaultValue={selectedModel2} emitSelectedModel={setSelectedModel2}/>}
       </div>
+      <Separator />
+      <Label htmlFor="Configs">Configs:</Label>
       <TemperatureSelector value={[
         temperature
       ]} setValue={(v) => {

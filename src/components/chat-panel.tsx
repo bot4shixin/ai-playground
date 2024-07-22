@@ -29,16 +29,16 @@ export function ChatPanel({
   isAtBottom,
   scrollToBottom
 }: ChatPanelProps) {
-  const [aiState] = useAIState()
+  const [aiState, a] = useAIState()
   const [messages] = useUIState<typeof AI>()
   const [shareDialogOpen, setShareDialogOpen] = React.useState(false)
 
   return (
     <div className="absolute inset-x-0 bottom-0 w-full peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
-      {/* <ButtonScrollToBottom
+      <ButtonScrollToBottom
         isAtBottom={isAtBottom}
         scrollToBottom={scrollToBottom}
-      /> */}
+      />
 
       <div className="mx-auto">
         {/* todo share mutiple */}
@@ -72,7 +72,7 @@ export function ChatPanel({
         ) : null} */}
 
         <div className="space-y-4 border-t bg-background px-4 py-2 shadow-lg md:py-4 bg-background-200 border-gray-alpha-400">
-          <PromptForm input={input} setInput={setInput} />
+          <PromptForm input={input} setInput={setInput} scrollToBottom={scrollToBottom} />
         </div>
       </div>
     </div>

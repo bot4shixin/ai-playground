@@ -24,7 +24,6 @@ import { VideoSearchSection } from '@/components/video-search-section'
 import { transformToolMessages } from '@/lib/utils'
 import { AnswerSection } from '@/components/answer-section'
 import { ErrorCard } from '@/components/error-card'
-import { use } from 'react'
 
 async function submit(
   formData?: FormData,

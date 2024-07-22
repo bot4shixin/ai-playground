@@ -26,7 +26,7 @@ import { Model, ModelType } from "@/app/playground/data/models"
 interface ModelSelectorProps extends PopoverProps {
   types: readonly ModelType[]
   models: Model[]
-  emitSelectedModel?: (model: Model) => void
+  emitSelectedModel?: (model: Model<ModelType>) => void
   defaultValue: Model
 }
 
@@ -72,7 +72,8 @@ export function ModelSelector({ models, defaultValue, emitSelectedModel, types, 
                         onPeek={(model) => setPeekedModel(model)}
                         onSelect={() => {
                           setSelectedModel(model)
-                          emitSelectedModel?.(model)
+                          // todo fix this as
+                          emitSelectedModel?.(model as Model<ModelType>)
                           setOpen(false)
                         }}
                       />

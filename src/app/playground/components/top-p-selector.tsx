@@ -18,7 +18,7 @@ interface TopPSelectorProps {
 
 export function TopPSelector({ value , setValue}: TopPSelectorProps) {
   return (
-    <div className="grid gap-2 pt-2">
+    <div className="grid gap-2 pb-2">
       <HoverCard openDelay={200}>
         <HoverCardTrigger asChild>
           <div className="grid gap-4">

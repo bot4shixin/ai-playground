@@ -32,27 +32,21 @@ export default async function Dashboard() {
         <main className="grid flex-1 overflow-auto p-2 md:grid-cols-2 lg:grid-cols-3">
           <div className="relative flex h-full min-h-[50vh] flex-col lg:col-span-3">
             <div className='flex-1 flex w-full h-full p-2 space-x-4 overflow-x-auto snap-x snap-mandatory md:snap-none md:overflow-y-hidden'>
-              <div className="relative flex  overflow-hidden flex-shrink-0 md:flex-shrink md:min-w-[480px] snap-center rounded-md min-h-[250px] bg-background-100 w-full h-full border border-gray-alpha-400">
-                <AI initialAIState={{ chatId: id, messages: [] }}>
-                  <Chat id={id} session={session} missingKeys={missingKeys} />
-                </AI>
-              </div>
-              <div className="relative flex  overflow-hidden flex-shrink-0 md:flex-shrink md:min-w-[480px] snap-center rounded-md min-h-[250px] bg-background-100 w-full h-full border border-gray-alpha-400">
-                <AI initialAIState={{ chatId: id, messages: [] }}>
-                  <Chat id={id} session={session} missingKeys={missingKeys} />
-                </AI>
-              </div>
-              <div className="relative flex  overflow-hidden flex-shrink-0 md:flex-shrink md:min-w-[480px] snap-center rounded-md min-h-[250px] bg-background-100 w-full h-full border border-gray-alpha-400">
-                <AI initialAIState={{ chatId: id, messages: [] }}>
-                  <Chat id={id} session={session} missingKeys={missingKeys} />
-                </AI>
-              </div>
-              <div className="relative flex  overflow-hidden flex-shrink-0 md:flex-shrink md:min-w-[480px] snap-center rounded-md min-h-[250px] bg-background-100 w-full h-full border border-gray-alpha-400">
-                <AI initialAIState={{ chatId: id, messages: [] }}>
-                  <Chat id={id} session={session} missingKeys={missingKeys} />
-                </AI>
-              </div>
-  
+              <AI initialAIState={{ chatId: id, messages: [] }}>
+                <Chat id={id} session={session} missingKeys={missingKeys} />
+              </AI>
+              <AI initialAIState={{ chatId: id, messages: [] }}>
+                <Chat id={id} session={session} missingKeys={missingKeys} />
+              </AI> 
+              <AI initialAIState={{ chatId: id, messages: [] }}>
+                <Chat id={id} session={session} missingKeys={missingKeys} />
+              </AI> 
+              <AI initialAIState={{ chatId: id, messages: [] }}>
+                <Chat id={id} session={session} missingKeys={missingKeys} />
+              </AI>
+              <AI initialAIState={{ chatId: id, messages: [] }}>
+                <Chat id={id} session={session} missingKeys={missingKeys} />
+              </AI>
             </div>
           </div>
         </main>

@@ -9,6 +9,7 @@ import {
   createStreamableValue
 } from 'ai/rsc'
 import { openai } from '@ai-sdk/openai'
+import { google } from '@ai-sdk/google';
 
 import {
   spinner,
@@ -35,6 +36,7 @@ import { saveChat } from '@/app/actions'
 import { SpinnerMessage, UserMessage } from '@/components/stocks/message'
 import { Chat, Message } from '@/lib/types'
 import { auth } from '@/auth'
+
 
 async function confirmPurchase(symbol: string, price: number, amount: number) {
   'use server'
@@ -106,11 +108,10 @@ async function confirmPurchase(symbol: string, price: number, amount: number) {
   }
 }
 
-async function submitUserMessage(content: string) {
+async function submitUserMessage(content: string, model?: string) : Promise<void> {
   'use server'
 
   const aiState = getMutableAIState<typeof AI>()
-
   aiState.update({
     ...aiState.get(),
     messages: [
@@ -125,25 +126,10 @@ async function submitUserMessage(content: string) {
 
   let textStream: undefined | ReturnType<typeof createStreamableValue<string>>
   let textNode: undefined | React.ReactNode
-
   const result = await streamUI({
-    model: openai('gpt-3.5-turbo'),
+    model: google('models/gemini-1.5-pro-latest'),
     initial: <SpinnerMessage />,
-    system: `\
-    You are a stock trading conversation bot and you can help users buy stocks, step by step.
-    You and the user can discuss stock prices and the user can adjust the amount of stocks they want to buy, or place an order, in the UI.
-    
-    Messages inside [] means that it's a UI element or a user event. For example:
-    - "[Price of AAPL = 100]" means that an interface of the stock price of AAPL is shown to the user.
-    - "[User has changed the amount of AAPL to 10]" means that the user has changed the amount of AAPL to 10 in the UI.
-    
-    If the user requests purchasing a stock, call \`show_stock_purchase_ui\` to show the purchase UI.
-    If the user just wants the price, call \`show_stock_price\` to show the price.
-    If you want to show trending stocks, call \`list_stocks\`.
-    If you want to show events, call \`get_events\`.
-    If the user wants to sell stock, or complete another impossible task, respond that you are a demo and cannot do that.
-    
-    Besides that, you can also chat with users and do some calculations if needed.`,
+    system: ``,
     messages: [
       ...aiState.get().messages.map((message: any) => ({
         role: message.role,
@@ -476,7 +462,6 @@ async function submitUserMessage(content: string) {
       }
     }
   })
-
   return {
     id: nanoid(),
     display: result.value
@@ -492,8 +477,10 @@ export type UIState = {
   id: string
   display: React.ReactNode
 }[]
+type AIAction<T = any, R = any> = (...args: T[]) => Promise<R>;
+type AIActions<T = any, R = any> = Record<string, AIAction<T, R>>;
 
-export const AI = createAI<AIState, UIState>({
+export const AI = createAI<AIState, UIState, AIActions>({
   actions: {
     submitUserMessage,
     confirmPurchase
@@ -558,22 +545,18 @@ export const getUIStateFromAIState = (aiState: Chat) => {
             return tool.toolName === 'listStocks' ? (
               <BotCard>
                 {/* TODO: Infer types based on the tool result*/}
-                {/* @ts-expect-error */}
                 <Stocks props={tool.result} />
               </BotCard>
             ) : tool.toolName === 'showStockPrice' ? (
               <BotCard>
-                {/* @ts-expect-error */}
                 <Stock props={tool.result} />
               </BotCard>
             ) : tool.toolName === 'showStockPurchase' ? (
               <BotCard>
-                {/* @ts-expect-error */}
                 <Purchase props={tool.result} />
               </BotCard>
             ) : tool.toolName === 'getEvents' ? (
               <BotCard>
-                {/* @ts-expect-error */}
                 <Events props={tool.result} />
               </BotCard>
             ) : null
