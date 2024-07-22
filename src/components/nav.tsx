@@ -9,6 +9,7 @@ import {
   SquareTerminal,
   SquareUser,
   Tent,
+  Search
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -18,6 +19,7 @@ import {
 } from "@/components/ui/tooltip"
 import Link from "next/link"
 const navItems = [
+  { label: "Search", icon: <Search className="size-5" /> , href: "/search"},
   { label: "Playground", icon: <SquareTerminal className="size-5" />, href: "/playground"},
   {
     label: "Assistant",
@@ -26,8 +28,8 @@ const navItems = [
   },
   { label: "Chat", icon: <MessagesSquare className="size-5" />, href: "/chat" },
   { label: "Prompt", icon: <FileBox className="size-5" /> , href: "/prompt"},
-  { label: "API", icon: <Code2 className="size-5" /> , href : "/api" },
-  { label: "Documentation", icon: <Book className="size-5" /> , href: "/docs"},
+  // { label: "API", icon: <Code2 className="size-5" /> , href : "/api" },
+  // { label: "Documentation", icon: <Book className="size-5" /> , href: "/docs"},
   { label: "Settings", icon: <Settings2 className="size-5" /> , href: "/settings" },
 ]
 

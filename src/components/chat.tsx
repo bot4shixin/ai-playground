@@ -84,7 +84,7 @@ export function Chat({ id, className, session, missingKeys }: ChatProps) {
   }, []);
   return (
     <div className='relative flex flex-col overflow-hidden flex-shrink-0 md:flex-shrink md:min-w-[480px] snap-center rounded-md min-h-[250px] bg-background-100 w-full h-full border border-gray-alpha-400'>
-      <div className='flex justify-between p-4 border-b'>
+      <div className='flex justify-between p-4 border-b bg-muted/50'>
         <ModelSelector types={types} models={models} defaultValue={selectedModel1} emitSelectedModel={setSelectedModel1}/>
         <div className="flex items-center space-x-2">
           <Switch id="synced" />
